@@ -1,45 +1,81 @@
 
 
- <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="{% url 'home' %}" class="text-2xl font-bold text-gray-900">
-                Ecommerce Shopping  
-            </a>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 transition-colors">Home</a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Shop</a>
-                <a href="{% url 'about' %}" class="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-                
-                {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}" class="text-gray-600 hover:text-gray-900 transition-colors">Logout</a>
-               
-               {% else %}
-                <a href="{% url 'login' %}" class="text-gray-600 hover:text-gray-900 transition-colors">Login</a>
-               
-                <a href="{% url 'register' %}" class="text-gray-600 hover:text-gray-900 transition-colors">Register</a>
-                {% endif %}
+<div class="">
 
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+  <div class=" sticky shadow-2xl">
+        <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+
+                <!-- 1. Logo/Brand (Always visible) -->
+                <div class="flex-shrink-0 text-purple-600">
+                    <a href="#" class="text-2xl font-extrabold text-primary-shop flex items-center">
+                        <!-- Simple Shopping Bag Icon (SVG) -->
+                        <svg class="w-7 h-7 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        Ecom Shop
+                    </a>
+                </div>
+
+                <!-- 2. Primary Navigation Links (Hidden on mobile, centered on desktop) -->
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-primary-shop px-3 py-2 text-sm font-medium rounded-md transition duration-150">Shop All</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-shop px-3 py-2 text-sm font-medium rounded-md transition duration-150">Categories</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-shop px-3 py-2 text-sm font-medium rounded-md transition duration-150">Deals</a>
+                    <a href="#" class="text-gray-600 hover:text-primary-shop px-3 py-2 text-sm font-medium rounded-md transition duration-150">About</a>
+                </nav>
+
+                <!-- 3. Utility Icons (Right side) -->
+                <div class="flex items-center space-x-2">
+
+                    
+
+                    <!-- User Profile Icon -->
+                    <div class="nav-icon hidden sm:block" role="button" aria-label="Account">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+
+                    <!-- Cart Icon (now without count badge) -->
+                    <div class="hidden md:flex items-center space-x-1">
+               
+                <a href="#" class="py-2 px-3 text-gray-600 hover:text-gray-500 rounded transition duration-300">Sign-In</a>
+           <a href="" class=" bg-purple-600 text-gray-50 hover:bg-purple-700 px-5 rounded-full p-3">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 inline-block">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+Cart (0)</a>
+              </div>
+                    
+                    <!-- Mobile Menu Button (Hamburger) - Visible only on mobile -->
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 md:hidden" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only"></span>
+                        <!-- Icon when menu is closed -->
+                        <svg id="menu-icon-closed" class="block h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <!-- Icon when menu is open -->
+                        <svg id="menu-icon-open" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.151 1.059.793 1.059H19M11 15.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zM17.5 15.5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                    </svg>
+        </div>
+
+        <!-- 4. Mobile Menu (Toggled visibility) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-100 shadow-inner">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-shop hover:text-white transition duration-150">Shop All</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-shop hover:text-white transition duration-150">Categories</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-shop hover:text-white transition duration-150">Deals</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-shop hover:text-white transition duration-150">About</a>
+
+                <!-- Mobile only utility links (duplicated for better touch targets) -->
+               
+                <a href="#" class="flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-100 transition duration-150">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    Account
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-600 hover:text-gray-900 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
-            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors">Home</a>
-            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors">Shop</a>
-            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors">About</a>
-            <a href="#" class="block px-4 py-3 text-gray-600 hover:bg-gray-100 transition-colors">Contact</a>
-        </div>
-    </nav>
+    </div>
 
+ </div>
+
+ 
